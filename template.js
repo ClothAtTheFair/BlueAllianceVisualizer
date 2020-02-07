@@ -2,37 +2,26 @@ import React, {Component} from 'react';
 import './App.css';
 import Chart from 'chart.js';
 
-export default class App extends Component {
+export default class template extends Component {
   chartRef = React.createRef();
 
   componentDidMount(){
     const myChartRef = this.chartRef.current.getContext("2d");
 
     new Chart(myChartRef, {
-      type: 'scatter',
+      type: "line",
       data: {
         //Bring in data
-        datasets: [{
-          label: 'Scatter Dataset',
-          data: [{
-            x: -10,
-            y: 0
-          }, {
-            x: 0, 
-            y: 0
-          }, {
-            x: 10,
-            y: 5
-          }]
-        }]
+        labels: ["Jan", "Feb", "March"],
+        datasets: [
+          {
+            label: "Sales",
+            data: [86, 69, 420],
+          }
+        ]
       },
       options: {
-        scales: {
-          xAxes: [{
-            type: 'linear', 
-            position: 'bottom'
-          }]
-        }
+        //Customize chart
       }
     });
   }
@@ -46,5 +35,3 @@ export default class App extends Component {
   }
   
 }
-
-
